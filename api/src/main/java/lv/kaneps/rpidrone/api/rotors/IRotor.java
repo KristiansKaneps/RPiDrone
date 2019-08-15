@@ -8,4 +8,6 @@ public interface IRotor
 	 * @return current speed in percentage
 	 */
 	float currentSpeed();
+
+	void stop();
 }
