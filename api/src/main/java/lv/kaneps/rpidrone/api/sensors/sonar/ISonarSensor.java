@@ -1,6 +1,6 @@
 package lv.kaneps.rpidrone.api.sensors.sonar;
 
-import lv.kaneps.rpidrone.api.INativeSensor;
+import lv.kaneps.rpidrone.api.sensors.INativeSensor;
 
 public interface ISonarSensor extends INativeSensor
 {

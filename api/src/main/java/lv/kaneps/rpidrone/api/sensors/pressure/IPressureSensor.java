@@ -1,6 +1,6 @@
 package lv.kaneps.rpidrone.api.sensors.pressure;
 
-import lv.kaneps.rpidrone.api.INativeSensor;
+import lv.kaneps.rpidrone.api.sensors.INativeSensor;
 
 public interface IPressureSensor extends INativeSensor
 {

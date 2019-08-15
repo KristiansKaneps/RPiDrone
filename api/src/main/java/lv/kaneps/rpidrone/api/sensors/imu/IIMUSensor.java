@@ -1,6 +1,6 @@
 package lv.kaneps.rpidrone.api.sensors.imu;
 
-import lv.kaneps.rpidrone.api.INativeSensor;
+import lv.kaneps.rpidrone.api.sensors.INativeSensor;
 import lv.kaneps.rpidrone.math.Quaternion;
 import lv.kaneps.rpidrone.math.Vector3f;
 

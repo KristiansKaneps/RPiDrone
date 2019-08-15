@@ -1,4 +1,4 @@
-package lv.kaneps.rpidrone.api;
+package lv.kaneps.rpidrone.api.sensors;
 
 public interface INativeSensor
 {
