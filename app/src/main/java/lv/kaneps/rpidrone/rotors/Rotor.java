@@ -5,8 +5,6 @@ import lv.kaneps.rpidrone.api.rotors.RotorID;
 
 public class Rotor implements IRotor
 {
-	private float currentSpeed; // current rotor speed percentage
-
 	private final RotorID id;
 	private final ESC esc;
 
@@ -19,12 +17,18 @@ public class Rotor implements IRotor
 	@Override
 	public void setSpeed(float percentage)
 	{
-		currentSpeed = percentage;
+		esc.output(percentage);
 	}
 
 	@Override
 	public float currentSpeed()
 	{
-		return currentSpeed;
+		return esc.currentSpeed();
+	}
+
+	@Override
+	public void stop()
+	{
+		esc.outputNeutralMicros();
 	}
 }
