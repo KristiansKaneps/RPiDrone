@@ -1,0 +1,14 @@
+dependencies {
+  compile 'org.jetbrains:annotations:16.0.2'
+}
+
+sourceSets {
+    common {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}

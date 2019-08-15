@@ -1,0 +1,12 @@
+allprojects {
+  task hello << { task -> println "Name: $task.project.name" }
+}
+
+subprojects {
+  apply plugin: 'java'
+  version = '1.0'
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  repositories {
+    mavenCentral()
+  }
+}

@@ -1,0 +1,2 @@
+rootProject.name = 'rpidrone'
+include ':api', ':common', ':app'
