@@ -10,6 +10,18 @@ public class Vector2d
 		this.y = y;
 	}
 
+	public Vector2d(double[] xyArr)
+	{
+		if(xyArr.length < 2)
+		{
+			x = 0;
+			y = 0;
+		}
+
+		x = xyArr[0];
+		y = xyArr[1];
+	}
+
 	public Vector2d()
 	{
 		this(0, 0);
@@ -30,5 +42,10 @@ public class Vector2d
 	{
 		x -= dx;
 		y -= dy;
+	}
+
+	public double[] toArray()
+	{
+		return new double[]{x, y};
 	}
 }

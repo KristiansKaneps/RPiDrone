@@ -1,17 +1,17 @@
 package lv.kaneps.rpidrone.math;
 
-public class Vector3d
+public class Vector3i
 {
-	public double x, y, z;
+	public int x, y, z;
 
-	public Vector3d(double x, double y, double z)
+	public Vector3i(int x, int y, int z)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
 	}
 
-	public Vector3d(double[] xyzArr)
+	public Vector3i(int[] xyzArr)
 	{
 		if(xyzArr.length < 3)
 		{
@@ -25,7 +25,7 @@ public class Vector3d
 		z = xyzArr[2];
 	}
 
-	public Vector3d()
+	public Vector3i()
 	{
 		this(0, 0, 0);
 	}
@@ -35,22 +35,28 @@ public class Vector3d
 		return Math.sqrt(x * x + y * y + z * z);
 	}
 
-	public void add(double dx, double dy, double dz)
+	public void add(int dx, int dy, int dz)
 	{
 		x += dx;
 		y += dy;
 		z += dz;
 	}
 
-	public void subtract(double dx, double dy, double dz)
+	public void subtract(int dx, int dy, int dz)
 	{
 		x -= dx;
 		y -= dy;
 		z -= dz;
 	}
 
-	public double[] toArray()
+	public int[] toArray()
 	{
-		return new double[]{x, y, z};
+		return new int[]{x, y, z};
+	}
+
+	@Override
+	public String toString()
+	{
+		return "x=" + x + ", y=" + y + ", z=" + z;
 	}
 }
