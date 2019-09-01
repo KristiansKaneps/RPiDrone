@@ -12,3 +12,91 @@ sourceSets {
         }
     }
 }
+
+apply plugin: 'cpp'
+apply plugin: 'c'
+
+model {
+    toolChains {
+        gcc(Gcc) {
+
+        }
+    }
+
+    components {
+        npwm(NativeLibrarySpec) {
+            sources {
+                c {
+                    source {
+                        srcDir 'src/npwm/c'
+                        include 'src/npwm/*.c', 'src/npwm/*.h', 'src/lib/c/PigpioLib/*.c', 'src/lib/c/PigpioLib/*.h'
+                    }
+                }
+            }
+            binaries.withType(SharedLibraryBinarySpec) {
+                cppCompiler.args '-std=c99'
+                cppCompiler.args '-lpigpio'
+                cppCompiler.args '-pthread'
+                cppCompiler.args '-lrt'
+                cppCompiler.args '-Wno-implicit-function-declaration'
+                cppCompiler.args '-Wno-write-strings'
+            }
+        }
+        nimu(NativeLibrarySpec) {
+            sources {
+                cpp {
+                    source {
+                        srcDir 'src/nimu/c'
+                        include 'src/nimu/*.c', 'src/nimu/*.h', 'src/nimu/*.cpp', 'src/nimu/*.hpp', 'src/lib/c/MPU9250/*.cpp', 'src/lib/c/MPU9250/*.h'
+                    }
+                }
+            }
+            binaries.withType(SharedLibraryBinarySpec) {
+                cppCompiler.args '-std=c++11'
+                cppCompiler.args '-Wno-narrowing'
+            }
+        }
+        nsonar(NativeLibrarySpec) {
+            sources {
+                cpp {
+                    source {
+                        srcDir 'src/nsonar/c'
+                        include 'src/nsonar/*.c', 'src/nsonar/*.h', 'src/nsonar/*.cpp', 'src/nsonar/*.hpp'
+                    }
+                }
+            }
+        }
+        npressure(NativeLibrarySpec) {
+            sources {
+                cpp {
+                    source {
+                        srcDir 'src/npressure/c'
+                        include 'src/npressure/*.c', 'src/npressure/*.h', 'src/npressure/*.cpp', 'src/npressure/*.hpp'
+                    }
+                }
+            }
+        }
+    }
+
+    binaries {
+        withType(StaticLibraryBinarySpec) { buildable = false }
+        withType(SharedLibraryBinarySpec) {
+            if(toolChain in Gcc) {
+
+                cppCompiler.args '-lc'
+                cppCompiler.args '-shared'
+
+                if (targetPlatform.operatingSystem.linux) {
+                    cppCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
+                    cppCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/linux"
+                    cppCompiler.args '-D_FILE_OFFSET_BITS=64'
+                } else if (targetPlatform.operatingSystem.windows) {
+                    cppCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
+                    cppCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include/win32"
+                    linker.args "Shlwapi.lib", "Advapi32.lib"
+                }
+
+            }
+        }
+    }
+}
