@@ -24,13 +24,14 @@ public class Sensors implements ISensors
 	public Sensors(AltitudeSensor alt, IMUSensor imu, TemperatureSensor temp, PressureSensor pressure, SonarSensor sonar)
 	{
 		this.alt = alt;
-		this.imu = imu;
 		this.temp = temp;
 
+		this.imu = imu;
 		this.pressure = pressure;
 		this.sonar = sonar;
 	}
 
+	@Override
 	public void shutdownSensors()
 	{
 		imu.release();
@@ -45,15 +46,15 @@ public class Sensors implements ISensors
 	}
 
 	@Override
-	public IIMUSensor imuSensor()
-	{
-		return imu;
-	}
-
-	@Override
 	public ITemperatureSensor temperatureSensor()
 	{
 		return temp;
+	}
+
+	@Override
+	public IIMUSensor imuSensor()
+	{
+		return imu;
 	}
 
 	@Override

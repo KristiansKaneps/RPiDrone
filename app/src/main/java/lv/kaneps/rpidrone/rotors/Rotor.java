@@ -1,5 +1,6 @@
 package lv.kaneps.rpidrone.rotors;
 
+import lv.kaneps.rpidrone.api.rotors.IESC;
 import lv.kaneps.rpidrone.api.rotors.IRotor;
 import lv.kaneps.rpidrone.api.rotors.RotorID;
 
@@ -18,6 +19,18 @@ public class Rotor implements IRotor
 	public void setSpeed(float percentage)
 	{
 		esc.output(percentage);
+	}
+
+	@Override
+	public RotorID id()
+	{
+		return id;
+	}
+
+	@Override
+	public IESC getESC()
+	{
+		return esc;
 	}
 
 	@Override
