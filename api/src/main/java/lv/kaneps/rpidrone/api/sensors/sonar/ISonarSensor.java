@@ -1,8 +1,9 @@
 package lv.kaneps.rpidrone.api.sensors.sonar;
 
+import lv.kaneps.rpidrone.api.drivers.ISonarSensorDriver;
 import lv.kaneps.rpidrone.api.sensors.INativeSensor;
 
-public interface ISonarSensor extends INativeSensor
+public interface ISonarSensor extends INativeSensor<ISonarSensorDriver>
 {
 	float altitude();
 

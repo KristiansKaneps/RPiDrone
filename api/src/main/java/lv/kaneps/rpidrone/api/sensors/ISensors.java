@@ -6,12 +6,17 @@ import lv.kaneps.rpidrone.api.sensors.sonar.ISonarSensor;
 
 public interface ISensors
 {
+	// Made up sensors (software sensors)
 	IAltitudeSensor altitudeSensor();
-	IIMUSensor imuSensor();
 	ITemperatureSensor temperatureSensor();
 
+	// Real sensors (hardware sensors)
+	IIMUSensor imuSensor();
 	IPressureSensor pressureSensor();
 	ISonarSensor sonarSensor();
 
+	/**
+	 * Automatically releases all native sensors (those that implement INativeSensor interface)
+	 */
 	void shutdownSensors();
 }

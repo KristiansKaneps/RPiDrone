@@ -5,5 +5,5 @@ public enum RotorID
 	FRONT_RIGHT,
 	FRONT_LEFT,
 	BACK_LEFT,
-	BACK_RIGHT;
+	BACK_RIGHT
 }

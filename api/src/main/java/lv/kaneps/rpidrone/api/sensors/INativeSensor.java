@@ -1,6 +1,10 @@
 package lv.kaneps.rpidrone.api.sensors;
 
-public interface INativeSensor
+import lv.kaneps.rpidrone.api.drivers.IDriver;
+
+public interface INativeSensor<T extends IDriver>
 {
 	void release();
+
+	T driver();
 }
